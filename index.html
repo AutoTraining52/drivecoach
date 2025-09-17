@@ -180,30 +180,20 @@
       <div class="grid two">
         <div class="card" style="padding:22px">
           <h2 style="margin:0 0 8px">Записаться / задать вопрос</h2>
-          <form id="lead" class="grid" style="gap:12px">
-            <div class="grid two">
-              <label>Имя<br><input name="name" required placeholder="Ваше имя" style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:#0b1118; color:var(--text)"></label>
-              <label>Контакт (Kakao/Telegram/☎)<br><input name="contact" required placeholder="@kakao или номер" style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:#0b1118; color:var(--text)"></label>
-            </div>
-            <label>Комментарий<br><textarea name="msg" rows="4" placeholder="Когда удобно заниматься? Нужна ли помощь на экзамене?" style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:#0b1118; color:var(--text)"></textarea></label>
-            <button class="btn primary" type="submit">Отправить заявку</button>
-            <div id="thanks" style="display:none" class="highlight">Спасибо! Заявка отправлена. Я свяжусь с вами в ближайшее время.</div>
-          </form>
-          <script>
-            // Простейшая отправка: откроет почтовый клиент. Можно заменить на Google Forms / API
-            document.getElementById('lead').addEventListener('submit', function(e){
-              e.preventDefault();
-              const data = new FormData(this);
-              const subject = encodeURIComponent('Заявка с лендинга — подготовка к вождению');
-              const body = encodeURIComponent(`Имя: ${data.get('name')}
-Контакт: ${data.get('contact')}
-Сообщение: ${data.get('msg')}`);
-              // ВСТАВЬТЕ СВОЙ EMAIL НИЖЕ
-              const mail = 'mailto:artemkim126@gmail.com?subject='+subject+'&body='+body;
-              window.location.href = mail;
-              document.getElementById('thanks').style.display = 'block';
-            });
-          </script>
+          <form action="https://formspree.io/f/xpwjgbjw" method="POST" style="display:grid; gap:12px; margin-top:12px;">
+  <label>Имя:
+    <input type="text" name="name" required style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.2);">
+  </label>
+  <label>Контакт (Kakao/Telegram/📞):
+    <input type="text" name="contact" required style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.2);">
+  </label>
+  <label>Комментарий:
+    <textarea name="message" rows="4" style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.2);"></textarea>
+  </label>
+  <button type="submit" class="btn primary">Отправить заявку</button>
+</form>
+
+         
         </div>
         <div class="card" style="padding:22px">
           <h2 style="margin:0 0 8px">Контакты</h2>
